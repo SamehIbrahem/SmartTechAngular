@@ -1,0 +1,51 @@
+<div class="container">
+  <div class='col-md-6'>
+    <ngb-alert [type]="'success'" *ngIf="submitted && !alertClosed" (close)="alertClosed = true">Data saved
+      successfully</ngb-alert>
+    <h1>Add Student</h1>
+    <form #studentForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="student.name" required name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Name is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="student.phone" required #phone="ngModel">
+        <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">Phone is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" name="address" [(ngModel)]="student.address" required
+          #address="ngModel">
+        <div [hidden]="address.valid || address.pristine" class="alert alert-danger">Address is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="birthDate">Birth Date</label>
+        <input type="date" class="form-control" id="birthDate" name="birthDate" [ngModel]="student.birthDate | date:'yyyy-MM-dd'"
+          (ngModelChange)="student.birthDate = $event" required #birthDate="ngModel">
+        <div [hidden]="birthDate.valid || birthDate.pristine" class="alert alert-danger">Birth Date is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="faculty">Faculty</label>
+        <select class="form-control" id="faculty" required [(ngModel)]="student.facultyId" name="faculty">
+          <option *ngFor="let f of faculties" [value]="f.id">{{f.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="faculty">Image</label>
+        <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+        <img [src]="imgURL" [style.height.px] ="200" [style.width.px] ="200" *ngIf="imgURL">
+        <span style="color:red;" *ngIf="imageErrorMessage">{{imageErrorMessage}}</span>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!studentForm.form.valid">Submit</button>
+
+    </form>
+  </div>
+</div>

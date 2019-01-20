@@ -8,20 +8,30 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StudentComponent } from './student/student.component';
 import { CoreModule } from './core/core.module';
+import { StudentDetailComponent } from './student/student-detail/student-detail.component';
+import { FormsModule } from '@angular/forms';
+import { StudentAddComponent } from './student/student-add/student-add.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    StudentComponent
+    StudentComponent,
+    StudentDetailComponent,
+    StudentAddComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     CoreModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' 
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

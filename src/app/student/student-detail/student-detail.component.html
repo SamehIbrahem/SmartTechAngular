@@ -1,0 +1,47 @@
+<div class='card' *ngIf='student'>
+  <div class='card-header'>
+    {{pageTitle}}
+  </div>
+
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-6'>
+        <div class='row'>
+          <div class='col-md-4'>Name:</div>
+          <div class='col-md-8'>{{student.name}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Address:</div>
+          <div class='col-md-8'>{{student.address}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Phone:</div>
+          <div class='col-md-8'>{{student.phone}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>BirthDate:</div>
+          <div class='col-md-8'>{{student.birthDate | date:'yyyy-MM-dd'}}</div>
+        </div>
+        <div class='row'>
+          <div class='col-md-4'>Faculty Name:</div>
+          <div class='col-md-8'>{{student.facultyName}}</div>
+        </div>
+      </div>
+
+      <div class='col-md-4'>
+        <img class='center-block img-responsive' [style.width.px]='200' [style.height.px]='200' [style.margin.px]='2'
+          [src]='student.imageName' [title]='student.name'>
+      </div>
+      <div class='col-md-2'>
+        <div class='row'>
+          <button class='btn btn-outline-secondary' [routerLink]="['/edit-student',student.id]"
+            style='width:80px'>Edit</button>
+        </div>
+        <div class='row'>
+          <button class='btn btn-outline-danger' style='width:80px' mwlConfirmationPopover [popoverTitle]="'Confirm Delete'"
+            [popoverMessage]="'Are you sure?'" placement="left" (confirm)="onDeleteClick()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

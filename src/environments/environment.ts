@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  studentApiUrl: 'http://localhost:56692/api/student/'
+  studentApiUrl: 'http://localhost:56692/api/student/',
+  facultyApiUrl: 'http://localhost:56692/api/faculty/'
 
 };
 

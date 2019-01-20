@@ -1,4 +1,4 @@
-export interface IStudent {
+export class Student {
     id: number;
     name: string;
     birthDate: Date;
@@ -6,4 +6,6 @@ export interface IStudent {
     address: string;
     phone: number;
     facultyId: number;
+    facultyName: string;
+    age: number;
 }

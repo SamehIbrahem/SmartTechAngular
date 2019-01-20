@@ -1,8 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
-import { IStudent } from '../models/student.model';
+import { Student } from '../models/student.model';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -15,22 +14,22 @@ export class StudentService extends ApiService {
         this.apiUrl = environment.studentApiUrl;
     }
 
-    getStudents(): Observable<IStudent[]> {
-        return super.get<IStudent[]>('');
+    getStudents(): Observable<Student[]> {
+        return super.get<Student[]>('');
     }
-    addStudent(student: IStudent) {
-        super.post<IStudent>('add', student)
+    addStudent(student: Student): Observable<Student> {
+        return super.post<Student>('add', student)
     }
-    getStudentById(id: number): Observable<IStudent> {
-        return super.get<IStudent>('', `id=${id}`);
+    getStudentById(id: number): Observable<Student> {
+        return super.get<Student>('', `id=${id}`);
     }
 
     deleteStudentById(id: number): Observable<boolean> {
         return super.get<boolean>('delete', `id=${id}`);
     }
 
-    updateStudent(student: IStudent): Observable<IStudent> {
-        return super.post<IStudent>('edit', student);
+    updateStudent(student: Student): Observable<Student> {
+        return super.post<Student>('edit', student);
     }
 
 }

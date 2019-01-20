@@ -3,10 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { StudentComponent } from './student/student.component';
+import { StudentDetailComponent } from './student/student-detail/student-detail.component';
+import { StudentAddComponent } from './student/student-add/student-add.component';
 
 const routes: Routes = [
-  { path: 'add-student', component: StudentComponent },
-  // { path: 'products/:id', component: AppComponent , canActivate:[ProductDetailGuard]},
+  { path: 'add-student', component: StudentAddComponent },
+  { path: 'students/:id', component: StudentDetailComponent },
+  { path: 'edit-student/:id', component: StudentAddComponent },
   { path: 'welcome', component: HomeComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }

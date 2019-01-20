@@ -77,13 +77,6 @@ export abstract class ApiService {
     }
 
     private buildCommonHeader(): HttpHeaders {
-        return new HttpHeaders({
-            'Allow-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Credentials': 'true',
-            'Access-Control-Expose-Headers': 'FooBar',
-            'Access-Control-Allow-Methods': 'GET',
-            'Access-Control-Allow-Headers': 'Origin, Content-Type',
-        });
+        return new HttpHeaders({});
     }
 }
